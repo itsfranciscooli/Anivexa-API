@@ -216,6 +216,19 @@ On Vercel (or Railway/Render), set these as regular project environment variable
 
 ---
 
+## Deploying on Coolify
+
+The repo ships with a `Dockerfile`, so Coolify can build it directly. Caching is **off** by default, so you don't need Redis or Upstash.
+
+1. In Coolify, create a new resource from this Git repository.
+2. Set **Build Pack** to `Dockerfile`.
+3. Set **Ports Exposes** to `4000`.
+4. Deploy.
+
+No environment variables are required. To turn caching on later, set `CACHE_ENABLED=true` and the two `UPSTASH_REDIS_*` variables in Coolify's environment settings.
+
+---
+
 ## Deploying on Vercel
 
 > ⚠️ **Not recommended.** Vercel runs on shared datacenter IPs that are widely blocked by anime streaming sites. Most providers will fail silently or return errors — the API will technically run but you'll get little to no data back. Use a self-hosted VPS or use railway, render etc etc.
